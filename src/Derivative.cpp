@@ -3,12 +3,12 @@
 Derivative::Derivative(double x, double deltha) { x_ = x; deltha_ = deltha; }
 
 double Derivative::f(double arg) {
-    //f(x) = 3x^6
-    return 3*pow(arg, 6);
+    //f(x) = x^2
+    return pow(arg, 2);
 }
 
-double Derivative::Forward() { return (f(x_+deltha_) - f(x_)) / f(deltha_); }
+double Derivative::Forward() { return (f(x_+deltha_) - f(x_)) / deltha_; }
 
-double Derivative::Backward() { return (f(x_) - f(x_ - deltha_)) / f(deltha_); }
+double Derivative::Backward() { return (f(x_) - f(x_ - deltha_)) / deltha_; }
 
-double Derivative::Central() { return (f(x_+deltha_) - f(x_ - deltha_)) / f(deltha_); }
+double Derivative::Central() { return (f(x_+deltha_) - f(x_-deltha_)) / (2*deltha_); }
