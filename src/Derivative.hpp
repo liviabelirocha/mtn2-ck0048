@@ -14,6 +14,7 @@ class Derivative {
         double Forward();
         double Backward();
         double Central();
+        double Forward(double (*f)(double value));
 };
 
 #endif
