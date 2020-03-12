@@ -6,15 +6,14 @@
 
 class Derivative {
     private:
-        double x_, deltha_;
+        double x_, delta_;
+        double f(double arg);
 
     public:
         Derivative(double x, double deltha);
-        double f(double arg);
         double Forward();
         double Backward();
         double Central();
-        double Forward(double (*f)(double value));
 };
 
 #endif
