@@ -28,7 +28,7 @@ double Integral::integralEpsilon() {
         N = N*2;
         Integral *i = new Integral(Xin_, Xfin_, N);
         In = (*i).integralN();
-        err = abs((In-Iv)/In);
+        err = fabs((In-Iv)/In);
         Iv = In;
         delete i;
     } while( err > epsilon_);
