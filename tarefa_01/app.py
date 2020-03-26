@@ -47,7 +47,7 @@ def main(argv):
     dimention = src.shape[0]
     
     #Borrando a imagem
-    src = cv.GaussianBlur(src, (5, 5), 0)
+    #src = cv.GaussianBlur(src, (5, 5), 0)
     #Colocando em escala de cinza
     gray = cv.cvtColor(src, cv.COLOR_BGR2GRAY)
     
