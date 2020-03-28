@@ -17,7 +17,7 @@ O exemplo utilizado foi o dado no PDF da aula 8:
 ![Exemplo](./exemplo.png)
 
 * Para os métodos de **partição**, foram utilizadas **10^4** iterações;
-* Para os métodos de **tolerância**, foi utilizado **10^6**.
+* Para os métodos de **tolerância**, foi utilizado **10^-6**.
 * A **precisão** está setada para **20** casas decimais.
 
 A saída será a seguinte:
