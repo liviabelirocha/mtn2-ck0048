@@ -16,12 +16,14 @@ private:
 public:
     GaussLegendre(double a, double b, double N, double tol);
 
-    double integralParticao(int pontosInterpolacao, const double *w, const double *a);
-    double integralTolerancia(int pontosInterpolacao, const double *w, const double *a);
+    double integralParticao(int pontosInterpolacao, double *w, double *a);
+    double integralTolerancia(int pontosInterpolacao, double *w, double *a);
 
     double pontosInterpolacao2(int t);
     double pontosInterpolacao3(int t);
     double pontosInterpolacao4(int t);
+
+    void test(int pontosInterpolacao, double *w, double *a);
 };
 
 #endif
