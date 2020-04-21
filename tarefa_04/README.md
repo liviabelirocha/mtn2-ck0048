@@ -1,6 +1,6 @@
 # Métodos Numéricos II
 
-## Tarefa 2
+## Tarefa 4
 
 Essa tarefa consiste em:
 
