@@ -10,8 +10,10 @@ double x(int k, int n);
 double integral(int iter, double *w, double *x);
 double hermite2();
 double hermite3();
+double hermite4();
 double laguerre2();
 double laguerre3();
+double laguerre4();
 double chebychev(int n);
 
 /* Main */
@@ -25,14 +27,17 @@ int main()
          << "GAUSS-HERMITE" << endl
          << "GRAU 2 = " << hermite2() << endl
          << "GRAU 3 = " << hermite3() << endl
+         << "GRAU 4 = " << hermite4() << endl
          << endl
          << "GAUSS-LAGUERRE" << endl
          << "GRAU 2 = " << laguerre2() << endl
          << "GRAU 3 = " << laguerre3() << endl
+         << "GRAU 4 = " << laguerre4() << endl
          << endl
          << "GAUSS-CHEBYSHEV" << endl
          << "GRAU 2 = " << chebychev(2) << endl
-         << "GRAU 3 = " << chebychev(3) << endl;
+         << "GRAU 3 = " << chebychev(3) << endl
+         << "GRAU 4 = " << chebychev(4) << endl;
     return 0;
 }
 
@@ -81,6 +86,21 @@ double hermite3()
     return integral(3, w, x);
 }
 
+double hermite4()
+{
+    double w[4], x[4];
+
+    w[0] = w[1] = 0.80491409;
+    w[2] = w[3] = 0.08131283545;
+
+    x[0] = 0.5246476233;
+    x[1] = -x[0];
+    x[2] = 1.650680124;
+    x[3] = -x[2];
+
+    return integral(4, w, x);
+}
+
 double laguerre2()
 {
     double w[2], x[2];
@@ -107,6 +127,23 @@ double laguerre3()
     x[2] = 6.2899450829;
 
     return integral(3, w, x);
+}
+
+double laguerre4()
+{
+    double w[4], x[4];
+
+    w[0] = 0.603154104341638;
+    w[1] = 0.35741869243779295;
+    w[2] = 0.03888790851500541;
+    w[3] = 0.0005392947055613309;
+
+    x[0] = 0.32254768961939;
+    x[1] = 1.74576110115835;
+    x[2] = 4.53662029692113;
+    x[3] = 9.39507091230113;
+
+    return integral(4, w, x);
 }
 
 double chebychev(int n)
