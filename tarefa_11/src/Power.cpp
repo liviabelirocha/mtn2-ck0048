@@ -30,6 +30,6 @@ void Power::RegularPower()
     } while (currentError > tol_);
 
     std::cout << "O autovalor dominante do autovetor ";
-    arbitratyVector_.print();
+    oldVector.print();
     std::cout << " é " << newAutovalue << endl;
 }
