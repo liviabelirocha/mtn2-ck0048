@@ -34,7 +34,7 @@ void Matrix::setElement(int i, int j, double element)
 {
     if (i >= size_ || j >= size_ || i < 0 || j < 0)
     {
-        cout << "ERROR!!! INVALID MATRIX POSITION!" << endl;
+        //cout << "ERROR!!! INVALID MATRIX POSITION!" << endl;
         return;
     }
     matrix_[i][j] = element;
@@ -59,14 +59,23 @@ VectorN Matrix::operator*(VectorN v)
     for (int i = 0; i < size_; i++)
     {
         for (int j = 0; j < size_; j++)
-        {
             sum += matrix_[i][j] * v.getElement(j);
-        }
         res.setElement(i, sum);
         sum = 0;
     }
 
     return res;
+}
+
+Matrix Matrix::operator-(double n)
+{
+    Matrix m = Matrix(size_);
+    for (int i = 0; i < size_; i++)
+    {
+        for (int j = 0; j < size_; j++)
+            m.setElement(i, j, matrix_[i][j] - n);
+    }
+    return m;
 }
 
 void Matrix::print()
@@ -140,36 +149,4 @@ void Matrix::decompLU()
             }
         }
     }
-}
-
-Matrix Matrix::inverse()
-{
-    Matrix identity = Matrix(size_);
-    Matrix y = Matrix(size_);
-    Matrix inverse = Matrix(size_);
-    identity.identity();
-
-    for (int c = 0; c < size_; c++)
-    {
-        for (int i = 0; i < size_; ++i)
-        {
-            y.setElement(i, c, identity.getElement(i, c));
-            for (int k = 0; k < i; k++)
-                y.setElement(i, c, y.getElement(i, c) - L_[i][k] * y.getElement(k, c));
-        }
-    }
-
-    for (int c = 0; c < size_; c++)
-    {
-        for (int i = size_ - 1; i >= 0; --i)
-        {
-            inverse.setElement(i, c, y.getElement(i, c));
-            for (int k = i + 1; k < size_; k++)
-                inverse.setElement(i, c, inverse.getElement(i, c) - U_[i][k] * inverse.getElement(k, c));
-            inverse.setElement(i, c, inverse.getElement(i, c) / U_[i][i]);
-        }
-    }
-
-    print(inverse);
-    return inverse;
 }

@@ -22,13 +22,13 @@ public:
     Matrix(vector<vector<double>> matrix);
     void setElement(int i, int j, double element);
     VectorN operator*(VectorN v);
+    Matrix operator-(double n);
     int getSize();
     int getElement(int i, int j);
     void print();
     void print(Matrix m);
     void identity();
     void decompLU();
-    Matrix inverse();
 };
 
 #endif

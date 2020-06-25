@@ -43,7 +43,7 @@ VectorN Power::solveLU(VectorN x, int n)
     return retroativeIteractions(matrix_.U_, y);
 }
 
-void Power::InversePower()
+tuple<double, VectorN> Power::InversePower(int mode)
 {
     matrix_.decompLU();
 
@@ -69,11 +69,28 @@ void Power::InversePower()
 
     newAutovalue = 1 / newAutovalue;
 
-    std::cout << "O menor autovalor do autovetor ";
-    oldVector.print();
-    std::cout << " é " << newAutovalue << endl;
+    if (mode == 0)
+    {
+        std::cout << "O menor autovalor do autovetor ";
+        oldVector.print();
+        std::cout << " é " << newAutovalue << endl;
+    }
+
+    return {newAutovalue, oldVector};
 }
 
 void Power::DisplacementPower()
 {
+    double autoValue = 0, newAutovalue = 0;
+    Matrix Ab = Matrix(matrix_.getSize());
+    VectorN autoVector = VectorN(matrix_.getSize());
+
+    Ab = matrix_ - mi_;
+
+    tie(autoValue, autoVector) = InversePower(1);
+    newAutovalue = autoValue + mi_;
+
+    std::cout << "O autovalor do autovetor ";
+    autoVector.print();
+    std::cout << " é " << newAutovalue << endl;
 }

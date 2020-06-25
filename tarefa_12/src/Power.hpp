@@ -4,6 +4,7 @@
 #include <iostream>
 #include <cmath>
 #include <vector>
+#include <tuple>
 
 #include "Matrix.hpp"
 #include "VectorN.hpp"
@@ -22,7 +23,7 @@ public:
     VectorN solveLU(VectorN x, int n);
     VectorN retroativeIteractions(vector<vector<double>> m, VectorN v);
     VectorN sucessiveIteractions(vector<vector<double>> m, VectorN v);
-    void InversePower();
+    tuple<double, VectorN> InversePower(int mode);
     void DisplacementPower();
 };
 
