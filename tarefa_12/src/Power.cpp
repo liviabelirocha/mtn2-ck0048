@@ -36,16 +36,16 @@ VectorN Power::retroativeIteractions(vector<vector<double>> m, VectorN v)
     return x;
 }
 
-VectorN Power::solveLU(VectorN x, int n)
+VectorN Power::solveLU(VectorN x, int n, Matrix matrix)
 {
     VectorN y = VectorN(n);
-    y = sucessiveIteractions(matrix_.L_, x);
-    return retroativeIteractions(matrix_.U_, y);
+    y = sucessiveIteractions(matrix.L_, x);
+    return retroativeIteractions(matrix.U_, y);
 }
 
-tuple<double, VectorN> Power::InversePower(int mode)
+tuple<double, VectorN> Power::InversePower(int mode, Matrix matrix)
 {
-    matrix_.decompLU();
+    matrix.decompLU();
 
     double newAutovalue = 0, oldAutovalue = 0, currentError = 0;
 
@@ -60,7 +60,7 @@ tuple<double, VectorN> Power::InversePower(int mode)
         oldVector.copyVector(newVector);
         oldVector.normalize();
 
-        newVector = solveLU(oldVector, matrix_.getSize());
+        newVector = solveLU(oldVector, oldVector.getSize(), matrix);
 
         newAutovalue = oldVector * newVector;
         currentError = abs((newAutovalue - oldAutovalue) / newAutovalue);
@@ -87,7 +87,7 @@ void Power::DisplacementPower()
 
     Ab = matrix_ - mi_;
 
-    tie(autoValue, autoVector) = InversePower(1);
+    tie(autoValue, autoVector) = InversePower(1, Ab);
     newAutovalue = autoValue + mi_;
 
     std::cout << "O autovalor do autovetor ";

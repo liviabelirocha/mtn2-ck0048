@@ -20,10 +20,10 @@ private:
 
 public:
     Power(Matrix matrix, VectorN arbitratyVector, double tol, double mi);
-    VectorN solveLU(VectorN x, int n);
+    VectorN solveLU(VectorN x, int n, Matrix matrix);
     VectorN retroativeIteractions(vector<vector<double>> m, VectorN v);
     VectorN sucessiveIteractions(vector<vector<double>> m, VectorN v);
-    tuple<double, VectorN> InversePower(int mode);
+    tuple<double, VectorN> InversePower(int mode, Matrix m);
     void DisplacementPower();
 };
 

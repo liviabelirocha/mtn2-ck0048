@@ -63,20 +63,17 @@ int main()
      Power PA1 = Power(A1, arbitrary1, 0.0000001, 1);
      Power PA2 = Power(A2, arbitrary1, 0.0000001, 1);
      Power PA3 = Power(A3, arbitrary2, 0.0000001, 1);
-     Power PA4 = Power(A1, arbitrary1, 0.0000001, 1);
-     Power PA5 = Power(A2, arbitrary1, 0.0000001, 1);
-     Power PA6 = Power(A3, arbitrary2, 0.0000001, 1);
 
      cout << "POTÊNCIA INVERSA" << endl
           << endl
           << "EXEMPLO 1" << endl;
-     PA1.InversePower(0);
+     PA1.InversePower(0, A1);
      cout << endl
           << "EXEMPLO 2" << endl;
-     PA2.InversePower(0);
+     PA2.InversePower(0, A2);
      cout << endl
           << "EXEMPLO 3" << endl;
-     PA3.InversePower(0);
+     PA3.InversePower(0, A3);
 
      cout << endl
           << "POTÊNCIA COM DESLOCAMENTO" << endl
