@@ -85,7 +85,16 @@ void Power::DisplacementPower()
     Matrix Ab = Matrix(matrix_.getSize());
     VectorN autoVector = VectorN(matrix_.getSize());
 
-    Ab = matrix_ - mi_;
+    for (int i = 0; i < matrix_.getSize(); i++)
+    {
+        for (int j = 0; j < matrix_.getSize(); j++)
+        {
+            if (i == j)
+                Ab.setElement(i, j, matrix_.getElement(i, j) - mi_);
+            else
+                Ab.setElement(i, j, matrix_.getElement(i, j));
+        }
+    }
 
     tie(autoValue, autoVector) = InversePower(1, Ab);
     newAutovalue = autoValue + mi_;
