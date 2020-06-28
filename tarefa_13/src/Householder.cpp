@@ -59,6 +59,9 @@ void Householder::houseHolder()
         H = H * Hi;
     }
 
+    Ai.truncate();
+    H.truncate();
+
     cout << "MATRIZ A" << endl
          << endl;
     Ai.print();

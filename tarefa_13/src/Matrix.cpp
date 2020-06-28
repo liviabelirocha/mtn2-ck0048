@@ -30,6 +30,14 @@ Matrix::Matrix(int size)
     }
 }
 
+void Matrix::truncate()
+{
+    for (int i = 0; i < size_; i++)
+        for (int j = 0; j < size_; j++)
+            if (abs(matrix_[i][j]) < 0.00000000001)
+                matrix_[i][j] = 0;
+}
+
 void Matrix::setElement(int i, int j, double element)
 {
     if (i >= size_ || j >= size_ || i < 0 || j < 0)

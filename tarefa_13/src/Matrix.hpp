@@ -25,6 +25,7 @@ public:
     Matrix operator*(double n);
     Matrix operator*(Matrix m);
     Matrix operator-(Matrix m);
+    void truncate();
     int getSize();
     double getElement(int i, int j);
     void print();
