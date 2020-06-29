@@ -2,12 +2,16 @@
 
 #include "Matrix.hpp"
 #include "VectorN.hpp"
-#include "Householder.hpp"
+#include "EigenVectors.hpp"
 
 using namespace std;
 
 int main()
 {
+     VectorN arbitrary = VectorN(5);
+     for (int i = 0; i < arbitrary.getSize(); i++)
+          arbitrary.setElement(i, 1);
+
      Matrix A = Matrix(5);
      A.setElement(0, 0, 40);
      A.setElement(0, 1, 8);
@@ -35,7 +39,7 @@ int main()
      A.setElement(4, 3, 4);
      A.setElement(4, 4, 5);
 
-     Householder PA = Householder(A);
+     EigenVectors PA = EigenVectors(A, arbitrary, pow(10, -7));
      cout << "TAREFA 13 - MÉTODO DE HOUSEHOLDER" << endl
           << endl;
      PA.houseHolder();
