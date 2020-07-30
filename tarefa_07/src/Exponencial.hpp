@@ -9,16 +9,17 @@ using namespace std;
 class Exponencial
 {
 private:
-    double a_, b_;
+    double a_, b_, err_;
     int type_;
     double f(double x);
-    double xs(double s);
-    double dxs(double s);
+    double x(double s);
+    double dx(double s);
+    double fb(double x);
+    double NewtonCotes(double c1, double c2, int n);
 
 public:
-    Exponencial();
-    Exponencial(double a, double b, int type);
-    double fb(double x);
+    Exponencial(double a, double b, double err, int type);
+    double integrar();
 };
 
 #endif
